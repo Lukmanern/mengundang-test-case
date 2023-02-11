@@ -27,3 +27,15 @@ The testing with SimpleUser, which attempts to test all forms with various norma
 4. Repeatedly test all forms in the CMS
 
 5. Test all forms in various conditions.
+
+## General Rules
+
+1. ComplexUser and SimpleUser are not allowed to exchange information regarding the testing process and results.
+
+2. ComplexUser and SimpleUser are not allowed to be in close proximity to each other while one or both are conducting testing.
+
+3. Testing is conducted manually without the use of automated scripts.
+
+4. If an error occurs during the testing process, testing must continue until it cannot be continued.
+
+5. ComplexUser and SimpleUser must understand the format or guidelines for recording testing results and processes.
