@@ -147,3 +147,161 @@ benchmark(10000000,MD5(1))#
 | 1   | 05 Feb | Add Contacts Form | "));waitfor delay '0:0:5'-- | SQL Error . . . | Lorem ipsum dolor sit amet consectetur. |
 | 2   | 05 Feb | Add Contacts Form | "));waitfor delay '0:0:5'-- | SQL Error . . . | Lorem ipsum dolor sit amet consectetur. |
 | 3   | 05 Feb | Add Contacts Form | "));waitfor delay '0:0:5'-- | SQL Error . . . | Lorem ipsum dolor sit amet consectetur. |
+
+## All Routes
+
+```
+Auth::routes();
+
+Route::get('/', [
+      PublicController::class, 'home'
+]);
+
+Route::get('/a', [
+      InvitationController::class, 'justTesting'
+]);
+
+Route::get('/index', [
+      PublicController::class, 'home'
+]);
+
+// Google Auth
+Route::get('/login/google',
+      [LoginController::class, 'redirectToGoogle']
+)->name('login-with-google');
+
+Route::get('/login/google/callback',
+      [LoginController::class, 'handleGoogleCallback']
+)->name('callback-google');
+
+Route::get('/home',
+      // [App\Http\Controllers\HomeController::class, 'index']
+      function () {
+            return redirect()
+            ->route('dashboard')
+            ->with('notify', 'success')
+            ->with('message', 'Login. Selamat Datang !');
+      }
+)->name('home');
+
+Route::get('/how-to-create', function () {
+      return request()->route()->uri();
+})->name('how_to_create');
+
+// Halaman (Unique URL)
+Route::get('/inv/{inv_unique_code}/{contact_unique_code}',
+      [InvitationController::class, 'publicInvitation']
+)->name('invitation-unique-url');
+
+// Halaman (Unique URL)
+Route::get('/inv-gallery/{inv_unique_code}/{contact_unique_code}',
+      [InvitationController::class, 'publicGallery']
+)->name('gallery-unique-url');
+
+// Halaman (Public URL)
+Route::get('/public-inv/{inv_public_code}/',
+      [InvitationController::class, 'publicInvitation']
+)->name('invitation-public-url');
+
+// Halaman (Public URL)
+Route::get('/public-inv-gallery/{inv_public_code}/',
+      [InvitationController::class, 'publicGallery']
+)->name('gallery-public-url');
+
+Route::middleware('auth')->group(function () {
+      // Halaman
+      Route::get('/dashboard',
+            [DashboardController::class, 'dashboard']
+      )->name('dashboard');
+
+      // Halaman
+      Route::get('/dashboard/catalogue',
+            [DashboardController::class, 'catalogue']
+      )->name('catalogue');
+
+      // Halaman
+      Route::get('/dashboard/notifications',
+            [DashboardController::class, 'notification']
+      )->name('notifications');
+
+      // Halaman
+      Route::get('/dashboard/contacts',
+            [DashboardController::class, 'contacts']
+      )->name('contacts');
+
+      // Proses
+      Route::post('/dashboard/contacts/create-new-contacts',
+            [ContactController::class, 'create']
+      )->name('create-contacts');
+
+      // Proses
+      Route::get('/dashboard/contacts/download-all-contacts',
+            [ContactController::class, 'downloadContact']
+      )->name('download-all-contacts');
+
+      // Proses
+      Route::get('/dashboard/contacts/delete-contacts/{contact_id}',
+            [ContactController::class, 'delete']
+      )->name('delete-contacts');
+
+      // Proses
+      Route::post('/dashboard/contacts/update-contacts/{contact_id}',
+            [ContactController::class, 'update']
+      )->name('update-contacts');
+
+      // Halaman
+      Route::get('/dashboard/gallery',
+            [DashboardController::class, 'gallery']
+      )->name('gallery');
+
+      // Proses
+      Route::post('/dashboard/gallery/upload-photos',
+            [PhotoController::class, 'store']
+      )->name('upload-photos');
+
+      // Proses
+      Route::get('/dashboard/gallery/delete-photo/{photo_id}',
+            [PhotoController::class, 'delete']
+      )->name('delete-photo');
+
+      // Halaman
+      Route::get('/dashboard/invitations',
+            [DashboardController::class, 'invitations']
+      )->name('invitations');
+
+      // Halaman
+      Route::get('/dashboard/invitations/{inv_id}',
+            [InvitationController::class, 'invitationDetail']
+      )->name('update-invitation-page');
+
+      // Halaman
+      Route::get('/dashboard/view-theme/{id}',
+            [InvitationController::class, 'viewTheme']
+      )->name('view-theme');
+
+      // Proses
+      Route::post('/dashboard/invitations-save/{inv_id}',
+            [InvitationController::class, 'update']
+      )->name('save-invitation-data');
+
+      // Halaman->Proses
+      Route::get('/dashboard/payment/{package_id}',
+            [DashboardController::class, 'payment']
+      )->name('payment');
+
+      // Proses
+      Route::post('/dashboard/buy-package/{package_id}',
+            [PurchaseHistoryController::class, 'buyPackage']
+      )->name('buy-package');
+
+      // Halaman
+      Route::get('/dashboard/profile',
+            [DashboardController::class, 'profile']
+      )->name('profile');
+
+      // Proses
+      Route::post('/dashboard/profile/update-profile-data',
+            [ProfileController::class, 'updateProfile']
+      )->name('update-profile');
+});
+```
