@@ -40,6 +40,28 @@ The testing with SimpleUser, which attempts to test all forms with various norma
 
 5. ComplexUser and SimpleUser must understand the format or guidelines for recording testing results and processes.
 
+## Steps
+
+Note: Not all points/steps may be adopted. Here are the steps in conducting web application testing using the grey-box method:
+
+- Understanding Specification: Reading and understanding the specification and requirements of the tested application.
+
+- Code Analysis: Analyzing the code to understand how the application works and identifying which parts need to be tested.
+
+- Test Case Selection: Selecting test cases to be executed based on code analysis and specifications.
+
+- Test Data Creation: Creating test data to test the application and ensure that everything functions as expected.
+
+- Test Environment Setup: Preparing the test environment by installing the required software and configuring the test environment.
+
+- Running Test Cases: Running test cases using the created test data.
+
+- Recording Results: Recording test case results and identifying any issues found.
+
+- Reporting Results: Reporting test case results to the development team and/or project management for further action.
+
+The grey-box method is a combination of black-box and white-box methods, so in the code analysis stage, it is only done to understand how the application works, not to make changes to the application code.
+
 ## Payload XSS
 
 ```
